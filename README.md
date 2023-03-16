@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create Contentful App](https://github.com/contentful/create-contentful-app).
 
+## Overview
+
+A simple repeater app featuring a single text field that can be repeated, stored as a JSON object within Contentful. When installing the app definition be sure to add an `Instance Parameter` with an ID of `customFieldValue`.
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -28,11 +32,11 @@ Read [here](https://www.contentful.com/developers/docs/extensibility/app-framewo
 
 #### `npm run upload-ci`
 
-Similar to `npm run upload` it will upload your app to contentful and activate it. The only difference is   
+Similar to `npm run upload` it will upload your app to contentful and activate it. The only difference is  
 that with this command all required arguments are read from the environment variables, for example when you add
 the upload command to your CI pipeline.
 
-For this command to work, the following environment variables must be set: 
+For this command to work, the following environment variables must be set:
 
 - `CONTENTFUL_ORG_ID` - The ID of your organization
 - `CONTENTFUL_APP_DEF_ID` - The ID of the app to which to add the bundle
@@ -52,9 +56,8 @@ passed into each location. This can be used to interact with Contentful's
 management API. For example
 
 ```js
-  // Use the client
-  cma.locale.getMany({}).then((locales) => console.log(locales))
-
+// Use the client
+cma.locale.getMany({}).then((locales) => console.log(locales));
 ```
 
 Visit the [`contentful-management` documentation](https://www.contentful.com/developers/docs/extensibility/app-framework/sdk/#using-the-contentful-management-library)
