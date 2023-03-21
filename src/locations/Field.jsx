@@ -23,13 +23,15 @@ const Field = () => {
   const customFieldValue = sdk.parameters.instance.customFieldValue;
 
   sdk.field.onValueChanged((value) => {
-    if (value.length !== listItems.length) {
+    if (value && value.length !== listItems.length) {
       setListItems(value);
     }
   });
 
   const updateFieldValue = () => {
-    sdk.field.setValue([...listItems, newListItem]);
+    listItems
+      ? sdk.field.setValue([...listItems, newListItem])
+      : sdk.field.setValue([newListItem]);
     setNewListItem("");
   };
 
