@@ -41,37 +41,53 @@ const Field = () => {
 
   return (
     <>
-      <Flex flexWrap="wrap">
-        {listItems.map((item, index) => {
-          const uuid = item.replace(/\W/g, "-");
+      <Box margin="spacingXs">
+        <Flex flexWrap="wrap">
+          {listItems &&
+            listItems.map((item, index) => {
+              const uuid = item.replace(/\W/g, "-");
 
-          return (
-            <Box key={uuid} margin="spacing2Xs">
-              <Pill
-                className={uuid} // Creates id-safe string
-                label={item}
-                onClose={(e) => {
-                  removeListItem(index);
-                }}
-                // onDrag={() => {}}
-              />
-            </Box>
-          );
-        })}
-      </Flex>
+              return (
+                <Box key={uuid} margin="spacing2Xs">
+                  <Pill
+                    className={uuid} // Creates id-safe string
+                    label={item}
+                    onClose={(e) => {
+                      removeListItem(index);
+                    }}
+                    // onDrag={() => {}}
+                  />
+                </Box>
+              );
+            })}
+        </Flex>
+      </Box>
 
-      <Box marginTop="spacingS" marginBottom="spacingS">
+      <Box
+        marginTop="spacingXs"
+        marginRight="spacingS"
+        marginBottom="spacingXs"
+        marginLeft="spacingS"
+      >
         <TextInput
           name="title"
           type="text"
+          placeholder="Type an alternate title here..."
           value={newListItem}
           onChange={(e) => setNewListItem(e.target.value)}
         />
       </Box>
 
-      <Button variant="primary" onClick={updateFieldValue}>
-        {`Add ${customFieldValue}`}
-      </Button>
+      <Box
+        marginTop="spacingXs"
+        marginRight="spacingS"
+        marginBottom="spacingXs"
+        marginLeft="spacingS"
+      >
+        <Button variant="primary" onClick={updateFieldValue}>
+          {`Add ${customFieldValue}`}
+        </Button>
+      </Box>
     </>
   );
 };
